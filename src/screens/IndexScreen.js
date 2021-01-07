@@ -11,7 +11,7 @@ import { Context } from "../context/BlogContext";
 import { Feather } from "@expo/vector-icons";
 
 const IndexScreen = () => {
-  const { state, addBlogPosts } = useContext(Context);
+  const { state, addBlogPosts, deleteBlogPost } = useContext(Context);
   return (
     <View>
       <Button title="Add Post" onPress={addBlogPosts} />
@@ -24,7 +24,7 @@ const IndexScreen = () => {
               <Text style={styles.title}>
                 {item.title} - {item.id}
               </Text>
-              <TouchableOpacity onPress={() => console.log(item.id)}>
+              <TouchableOpacity onPress={() => deleteBlogPost(item.id)}>
                 <Feather name="trash" style={styles.icon} />
               </TouchableOpacity>
             </View>
